@@ -25,6 +25,12 @@
                     <a href="{% url 'photo:photo_update' pk=object.id %}" class="btn btn-outline-success btn-sm">수정</a>
                     <a href="{% url 'photo:photo_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm">삭제</a>
                 </div>
+
+                <div>
+                    {% load disqus_tags %}
+                    {% disqus_show_comments %}
+                </div>
+
             </div>
         </div>
         <div class="col-md-2"></div>
