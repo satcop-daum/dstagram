@@ -37,11 +37,25 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'photo:photo_upload' %}">포토 작성</a>
-                        </li>
 
-
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{user.get_username}} 님 안녕하세요.</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'photo:photo_upload' %}">포토 작성</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:accounts_logout' %}">로그아웃</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:accounts_login' %}">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:accounts_register' %}">회원가입</a>
+                            </li>
+                        {% endif %}
 
                     </ul>
                 </div>
