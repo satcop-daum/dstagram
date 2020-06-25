@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -19,6 +20,10 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ['-updated']
+
+    def get_absolute_url(self):
+        return reverse('photo:photo_detail', args=[self.id])
+
 
 
 
